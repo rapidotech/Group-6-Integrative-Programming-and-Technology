@@ -1,7 +1,8 @@
-from rest_framework.routers import DefaultRouter
-from .views import TaskViewSet
+from django.urls import path
+from .views import UserListCreate, PostListCreate, CommentListCreate
 
-router = DefaultRouter()
-router.register(r'tasks', TaskViewSet, basename='task')
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('users/', UserListCreate.as_view(), name='user-list-create'),
+    path('posts/', PostListCreate.as_view(), name='post-list-create'),
+    path('comments/', CommentListCreate.as_view(), name='comment-list-create'),
+]
